@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Setting xmlns="http://cstart.com/ui">
+    <TabPanel>
+        <!-- 第一标签页：系统配置 -->
+        <ViewPager title="系统配置">
+            <Text text="系统核心参数设置" fontBold="true" fontSize="18" fontColor="#003366"/>
+            <!-- 网络配置区域 -->
+            <Divider text="网络通信设置" fontColor="#0066CC"/>
+            <HorLayout>
+                <Text text="主服务器IP:" width="120"/>
+                <Input id="primaryServerIp" placeholder="例如: 192.168.1.100" default="192.168.1.100" minWidth="200" fontColor="#333333"/>
+                <CheckBox id="enablePrimaryServer" text="启用" default="true"/>
+            </HorLayout>
+            
+            <HorLayout >
+                <Text text="备服务器IP:" width="120"/>
+                <Input id="secondaryServerIp" placeholder="例如: 192.168.1.101" minWidth="200" fontColor="#333333"/>
+                <CheckBox id="enableSecondaryServer" text="启用" default="false"/>
+            </HorLayout>
+            
+            <HorLayout >
+                <Text text="服务端口:" width="120"/>
+                <Input id="servicePort" placeholder="请输入端口号" minWidth="100" fontColor="#333333"/>
+                <CheckBox id="useSSL" text="启用SSL/TLS加密" default="true" fontColor="#006600"/>
+            </HorLayout>
+            
+            <HorLayout >
+                <Text text="超时时间(秒):" width="120"/>
+                <Input id="timeoutSeconds" placeholder="请求超时时间" minWidth="80" fontColor="#333333"/>
+               
+            </HorLayout>
+            
+            <!-- 数据库配置区域 -->
+            <Divider text="数据库连接" fontColor="#0066CC"/>
+            <HorLayout>
+                <Text text="数据库类型:" width="120"/>
+                <SpinnerList id="dbType" default="mysql" minWidth="120" fontColor="#333333">
+                    <SpinnerEntry key="mysql" text="MySQL"/>
+                    <SpinnerEntry key="postgres" text="PostgreSQL"/>
+                    <SpinnerEntry key="oracle" text="Oracle"/>
+                    <SpinnerEntry key="sqlserver" text="SQL Server"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="数据库地址:" width="120"/>
+                <Input id="dbHost" placeholder="localhost" minWidth="200" fontColor="#333333"/>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="数据库端口:" width="120"/>
+                <Input id="dbPort" placeholder="默认3306" minWidth="100" fontColor="#333333"/>
+                <Text text="数据库名称:" width="100"/>
+                <Input id="dbName" placeholder="请输入数据库名" minWidth="150" fontColor="#333333"/>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="用户名:" width="120"/>
+                <Input id="dbUsername" placeholder="数据库访问用户" minWidth="150" fontColor="#333333"/>
+                <Text text="密码:" width="60"/>
+                <Input id="dbPassword" placeholder="数据库访问密码" minWidth="150" fontColor="#333333"/>
+            </HorLayout>
+            
+            <HorLayout>
+                <CheckBox id="dbConnectionPool" text="启用连接池" default="true"/>
+                <CheckBox id="dbAutoReconnect" text="自动重连" default="true"/>
+                <CheckBox id="dbReadOnly" text="只读模式" default="false"/>
+            </HorLayout>
+            
+            <!-- 认证与授权区域 -->
+            <Divider text="认证与授权" fontColor="#0066CC"/>
+            <HorLayout>
+                <Text text="LDAP服务器:" width="120"/>
+                <Input id="ldapServer" placeholder="ldap://server:port" minWidth="250" fontColor="#333333"/>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="认证方式:" width="120"/>
+                <RadioGroup id="authMethod" orientation="true" default="local" fontColor="#333333">
+                    <RadioButton key="ldap" text="LDAP认证" fontColor="#0066CC"/>
+                    <RadioButton key="oauth" text="OAuth认证" fontColor="#990099"/>
+                </RadioGroup>
+            </HorLayout>
+            
+            <HorLayout>
+                <CheckBox id="multiFactorAuth" text="启用多因素认证" default="false" fontColor="#CC0000"/>
+                <CheckBox id="sessionTimeoutWarn" text="会话超时提醒" default="true"/>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="会话超时(分钟):" width="120"/>
+                <Input id="sessionTimeout" placeholder="默认30分钟" minWidth="80" fontColor="#333333"/>
+            </HorLayout>
+            
+            <!-- 底部操作按钮 -->
+            <Divider />
+            <HorLayout>
+                <Button text="测试连接" fontColor="#0066CC"/>
+                <Text text="" width="30"/>
+                <Button text="保存配置" fontColor="#009900"/>
+                <Text text="" width="30"/>
+                <Button text="恢复默认" fontColor="#666666"/>
+            </HorLayout>
+        </ViewPager>
+        
+        <!-- 第二标签页：用户界面与个性化 -->
+        <ViewPager title="用户界面与个性化">
+            <Text text="界面与交互设置" fontBold="true" fontSize="18" fontColor="#003366"/>
+            
+            <!-- 视觉主题区域 -->
+            <Divider text="视觉主题" fontColor="#0066CC"/>
+            <HorLayout>
+                <Text text="整体主题:" width="100"/>
+                <SpinnerList id="overallTheme" default="default" minWidth="150" fontColor="#333333">
+                    <SpinnerEntry key="default" text="默认主题"/>
+                    <SpinnerEntry key="dark" text="深色主题" fontColor="#666666"/>
+                    <SpinnerEntry key="light" text="浅色主题" fontColor="#CCCCCC"/>
+                    <SpinnerEntry key="blue" text="蓝色专业风" fontColor="#0066CC"/>
+                    <SpinnerEntry key="green" text="绿色护眼风" fontColor="#009900"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="强调色:" width="100"/>
+                <SpinnerList id="accentColor" default="blue" minWidth="150" fontColor="#333333">
+                    <SpinnerEntry key="blue" text="科技蓝"/>
+                    <SpinnerEntry key="green" text="清新绿"/>
+                    <SpinnerEntry key="purple" text="优雅紫"/>
+                    <SpinnerEntry key="orange" text="活力橙"/>
+                    <SpinnerEntry key="red" text="热情红"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <CheckBox id="animations" text="启用动画效果" default="true"/>
+                <CheckBox id="highContrast" text="高对比度" default="false" fontColor="#CC0000"/>
+                <CheckBox id="reduceMotion" text="减少动画运动" default="false"/>
+            </HorLayout>
+            
+            <!-- 布局与显示区域 -->
+            <Divider text="布局与显示" fontColor="#0066CC"/>
+            <HorLayout>
+                <Text text="界面缩放:" width="100"/>
+                <SpinnerList id="uiScale" default="normal" minWidth="150" fontColor="#333333">
+                    <SpinnerEntry key="small" text="紧凑 (90%)"/>
+                    <SpinnerEntry key="normal" text="标准 (100%)"/>
+                    <SpinnerEntry key="large" text="宽松 (110%)"/>
+                    <SpinnerEntry key="xlarge" text="超大 (120%)"/>
+                </SpinnerList>
+                <Text text="边距:" width="60"/>
+                <SpinnerList id="marginSize" default="medium" minWidth="100" fontColor="#333333">
+                    <SpinnerEntry key="small" text="小"/>
+                    <SpinnerEntry key="medium" text="中"/>
+                    <SpinnerEntry key="large" text="大"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="字体设置:" width="100"/>
+                <SpinnerList id="fontFamily" default="system" minWidth="150" fontColor="#333333">
+                    <SpinnerEntry key="system" text="系统默认"/>
+                    <SpinnerEntry key="sans" text="无衬线字体"/>
+                    <SpinnerEntry key="serif" text="衬线字体"/>
+                    <SpinnerEntry key="mono" text="等宽字体"/>
+                </SpinnerList>
+                <Text text="字体大小:" width="80"/>
+                <SpinnerList id="fontSize" default="medium" minWidth="100" fontColor="#333333">
+                    <SpinnerEntry key="small" text="小"/>
+                    <SpinnerEntry key="medium" text="中"/>
+                    <SpinnerEntry key="large" text="大"/>
+                    <SpinnerEntry key="xlarge" text="超大"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <CheckBox id="fullscreenMode" text="全屏模式" default="false"/>
+                <CheckBox id="autoHideToolbar" text="自动隐藏工具栏" default="false"/>
+                <CheckBox id="stickyHeaders" text="粘性标题栏" default="true"/>
+            </HorLayout>
+            
+            <!-- 交互行为区域 -->
+            <Divider text="交互行为" fontColor="#0066CC"/>
+            <HorLayout>
+                <Text text="双击速度:" width="100"/>
+                <SpinnerList id="doubleClickSpeed" default="normal" minWidth="150" fontColor="#333333">
+                    <SpinnerEntry key="slow" text="慢速"/>
+                    <SpinnerEntry key="normal" text="正常"/>
+                    <SpinnerEntry key="fast" text="快速"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <CheckBox id="tooltips" text="显示工具" default="true"/>
+                <CheckBox id="confirmActions" text="操作前确认" default="false" fontColor="#0066CC"/>
+                <CheckBox id="keyboardShortcuts" text="启用键盘快捷键" default="true"/>
+            </HorLayout>
+            
+            <HorLayout>
+                <CheckBox id="showStatusBar" text="显示状态栏" default="true"/>
+                <CheckBox id="showNavigator" text="显示导航器" default="true"/>
+                <CheckBox id="showGridLines" text="显示网格线" default="false"/>
+            </HorLayout>
+            
+            <!-- 本地化设置区域 -->
+            <Divider text="本地化" fontColor="#0066CC"/>
+            <HorLayout>
+                <Text text="界面语言:" width="100"/>
+                <SpinnerList id="language" default="zh-CN" minWidth="150" fontColor="#333333">
+                    <SpinnerEntry key="zh-CN" text="简体中文" fontColor="#CC0000"/>
+                    <SpinnerEntry key="zh-TW" text="繁體中文" fontColor="#0000CC"/>
+                    <SpinnerEntry key="en-US" text="English (US)" fontColor="#009900"/>
+                    <SpinnerEntry key="en-GB" text="English (UK)" fontColor="#0066CC"/>
+                    <SpinnerEntry key="ja-JP" text="日本語" fontColor="#FF0000"/>
+                    <SpinnerEntry key="ko-KR" text="한국어" fontColor="#009900"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <Text text="日期格式:" width="100"/>
+                <SpinnerList id="dateFormat" default="yyyy-MM-dd" minWidth="150" fontColor="#333333">
+                    <SpinnerEntry key="yyyy-MM-dd" text="年-月-日"/>
+                    <SpinnerEntry key="MM/dd/yyyy" text="月/日/年"/>
+                    <SpinnerEntry key="dd/MM/yyyy" text="日/月/年"/>
+                </SpinnerList>
+                <Text text="时间格式:" width="80"/>
+                <SpinnerList id="timeFormat" default="24h" minWidth="100" fontColor="#333333">
+                    <SpinnerEntry key="12h" text="12小时制"/>
+                    <SpinnerEntry key="24h" text="24小时制"/>
+                </SpinnerList>
+            </HorLayout>
+            
+            <HorLayout>
+                <CheckBox id="rtlLayout" text="从右到左布局(RTL)" default="false"/>
+                <CheckBox id="useSystemLocale" text="使用系统区域设置" default="true"/>
+            </HorLayout>
+            
+            <!-- 底部操作按钮 -->
+            <Divider/>
+            <HorLayout>
+                <Button text="应用更改" fontColor="#009900"/>
+                <Text text="" width="30"/>
+                <Button text="重置设置" fontColor="#666666"/>
+                <Text text="" width="30"/>
+                <Button text="导出配置" fontColor="#0066CC"/>
+            </HorLayout>
+        </ViewPager>
+    </TabPanel>
+</Setting>

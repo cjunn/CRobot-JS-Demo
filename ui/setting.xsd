@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://cstart.com/ui"
+           xmlns:ui="http://cstart.com/ui"
+           elementFormDefault="qualified">
+
+    <xs:element name="Setting">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="TabPanel" type="ui:TabPanelType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TabPanelType">
+        <xs:sequence>
+            <xs:element name="ViewPager" type="ui:ViewPagerType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ViewPagerType">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Button" type="ui:ButtonType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="CheckBox" type="ui:CheckBoxType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Divider" type="ui:DividerType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="HorLayout" type="ui:HorLayoutType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="RadioGroup" type="ui:RadioGroupType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="SpinnerList" type="ui:SpinnerListType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Text" type="ui:TextType" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- 允许未来扩展的元素 -->
+                <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="title" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ButtonType">
+        <xs:attribute name="text" type="xs:string" use="required"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="CheckBoxType">
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="text" type="xs:string" use="required"/>
+        <xs:attribute name="default" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="DividerType">
+        <xs:attribute name="text" type="xs:string"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="HorLayoutType">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="CheckBox" type="ui:CheckBoxType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Input" type="ui:InputType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="SpinnerList" type="ui:SpinnerListType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Text" type="ui:TextType" minOccurs="0" maxOccurs="unbounded"/>
+                <!-- 允许未来扩展的元素 -->
+                <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="center" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="gravity" type="xs:string" use="optional"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="InputType">
+        <xs:attribute name="id" type="xs:string" use="optional"/>
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="default" type="xs:string" use="optional"/>
+        <xs:attribute name="placeholder" type="xs:string" use="optional"/>
+        <xs:attribute name="minWidth" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="RadioGroupType">
+        <xs:sequence>
+            <xs:element name="RadioButton" type="ui:RadioButtonType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="orientation" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="default" type="xs:string" use="optional"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="RadioButtonType">
+        <xs:attribute name="key" type="xs:string" use="required"/>
+        <xs:attribute name="text" type="xs:string" use="required"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="SpinnerListType">
+        <xs:sequence>
+            <xs:element name="SpinnerEntry" type="ui:SpinnerEntryType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="default" type="xs:string" use="optional"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="SpinnerEntryType">
+        <xs:attribute name="key" type="xs:string" use="required"/>
+        <xs:attribute name="text" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TextType">
+        <xs:attribute name="text" type="xs:string" use="required"/>
+        <xs:attribute name="singleLine" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="fontBold" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="fontColor" type="xs:string" use="optional"/>
+        <xs:attribute name="fontSize" type="xs:string" use="optional"/>
+        <xs:attribute name="paddingLeft" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingTop" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingRight" type="xs:int" use="optional" default="0"/>
+        <xs:attribute name="paddingBottom" type="xs:int" use="optional" default="0"/>
+        <!-- 保持兼容 -->
+        <xs:attribute name="bold" type="xs:boolean" use="optional" default="false"/>
+        <xs:attribute name="size" type="xs:int" use="optional"/>
+    </xs:complexType>
+
+</xs:schema>
