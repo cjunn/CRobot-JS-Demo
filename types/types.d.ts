@@ -37,7 +37,7 @@ interface Cursor {
   getBlob: (columnIndex: number) => ArrayBuffer;
   getString: (columnIndex: number) => string;
   getShort: (columnIndex: number) => number;
-  getInt:(columnIndex: number) => number;
+  getInt: (columnIndex: number) => number;
   getLong: (columnIndex: number) => number;
   getFloat: (columnIndex: number) => number;
   getDouble: (columnIndex: number) => number;
@@ -104,6 +104,14 @@ declare global {
 
   const SQLite: {
 
+  }
+  const Findscr: {
+    findMultiColor: (x1: number, y1: number, x2: number, y2: number, color: string, feature: string, dir: number, sim: number) => [number, number] | null;
+    findComplexMultiColor: (x1: number, y1: number, x2: number, y2: number, color: string, feature: string, exFeature: string, dir: number, sim: number, tolerance: number) => [number, number] | null;
+  }
+
+  const Input: {
+    tap: (x: number, y: number, time: number) => void;
   }
 
 }
