@@ -18,6 +18,7 @@ const drawRect =(list)=>{
 }
 
 const TestOcrLite = () => {
+    console.log("==========测试OcrLite===========");
     let soPath = Attach.getPath(`libs/${App.archite}/libOcrLite.so`);
     let angleBin = Attach.getPath(`ocrlite/angle_op.bin`);
     let angleParam = Attach.getPath(`ocrlite/angle_op.param`);

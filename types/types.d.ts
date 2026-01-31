@@ -58,8 +58,15 @@ interface SQLite {
   close: () => void;
 }
 
+interface Async {
+  take: (timeout: number) => unknown;
+  isDone: () => boolean;
+  cancel: () => boolean;
+}
+
 
 declare global {
+  function wrap(async: Async): Promise<unknown>;
   function openSQLite(path: string): SQLite;
   function getConfig(module: string): {
     getValue: (key: string) => ConfigValue;
@@ -90,7 +97,12 @@ declare global {
     create: () => Canvas;
   }
   const Thread: {
+    start(func: () => void, ...arg: any[]): Async;
+    getValue: (key: string) => ConfigValue;
+    name: () => string;
+    setValue: (key: string, value: ConfigValue) => void;
     sleep: (ms: number) => void;
+    delay: (ms: number) => Async;
   }
   const Gallery: {
     showByPath: (path: string) => void;
@@ -113,6 +125,10 @@ declare global {
   const Input: {
     tap: (x: number, y: number, time: number) => void;
     swipe: (x1: number, y1: number, x2: number, y2: number, time: number) => void;
+  }
+  const System: {
+    currentTimeMillis: () => number;
+    nanoTime: () => number;
   }
 
 }

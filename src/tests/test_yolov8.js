@@ -17,6 +17,7 @@ const drawRect =(list)=>{
     canvas.remove();
 }
 const TestYoloV8DetCoco = ()=>{
+    console.log("==========测试YoloV8===========");
     Gallery.showByPath(Attach.getPath("123.png"));
     Thread.sleep(1000);
     let labels = ["person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light",
