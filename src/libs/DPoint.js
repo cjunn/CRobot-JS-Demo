@@ -60,6 +60,35 @@ const runMul = (name, isClick, position) => {
 }
 
 
+
+
+const tapSwi = (name)=>{
+    let list = getCache("swi", name);
+    for (let row of list) {
+        let x1=row.x1+random(row.dx);
+		let y1=row.y1+random(row.dy);
+		let x2=row.x2+random(row.rx);
+		let y2=row.y2+random(row.ry);
+		let time=row.swit;
+        Input.swipe(x1,y1,x2,y2,time);
+        return true;
+    }
+
+}
+
+const tapFix = (name, del = 100) => {
+    let list = getCache("fix", name);
+    for (let row of list) {
+        let x1 = row.x1 + random(row.rx);
+        let y1 = row.y1 + random(row.ry);
+        Input.tap(x1, y1, 5);
+        Thread.sleep(del);
+        return true;
+    }
+
+};
+
+
 const tapMul = (name) => {
     let [x] = runMul(name, true);
     return x > -1;
@@ -72,5 +101,7 @@ const seeMul = (name) => {
 
 export {
     tapMul,
-    seeMul
+    seeMul,
+    tapFix,
+    tapSwi
 }

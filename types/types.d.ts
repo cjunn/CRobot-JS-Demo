@@ -112,6 +112,7 @@ declare global {
 
   const Input: {
     tap: (x: number, y: number, time: number) => void;
+    swipe: (x1: number, y1: number, x2: number, y2: number, time: number) => void;
   }
 
 }
