@@ -10,9 +10,9 @@ import { TestYoloV8DetCoco } from "./tests/test_yolov8";
 export default {
     main: async () => {
         await TestThread();
+        TestUI();
         TestSQLite();
         TestConfig();
-        TestUI();
         TestApp();
         TestOcrLite();
         TestYoloV8DetCoco();

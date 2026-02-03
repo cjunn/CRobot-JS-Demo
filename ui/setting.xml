@@ -14,7 +14,7 @@
             
             <HorLayout >
                 <Text text="备服务器IP:" width="120"/>
-                <Input id="secondaryServerIp" placeholder="例如: 192.168.1.101" minWidth="200" fontColor="#333333"/>
+                <Input id="secondaryServerIp" placeholder="例如: 192.168.1.101"  default="default2" minWidth="200" fontColor="#333333"/>
                 <CheckBox id="enableSecondaryServer" text="启用" default="false"/>
             </HorLayout>
             

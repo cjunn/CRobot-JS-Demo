@@ -9,6 +9,9 @@ const TestUI = () => {
     key = "enablePrimaryServer";
     val = UI.getValue(key);
     console.log(`${key}: ${val}`);
+    key = "secondaryServerIp";
+    val = UI.getValue(key);
+    console.log(`${key}: ${val}`);
 }
 export {
     TestUI
